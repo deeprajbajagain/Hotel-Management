@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Zurich: Room Reservations</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Reservations Page</h1>
+    <table class="table table-striped mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th>Room</th>
+            <th>Room Number</th>
+            <th>Guest</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="roomReservation : ${roomReservationList}">
+            <td th:text="${roomReservation.roomName}">Room Name</td>
+            <td th:text="${roomReservation.roomNumber}">Room Number</td>
+            <td th:text="${roomReservation.lastName != null ? roomReservation.lastName + ', ' + roomReservation.firstName : 'VACANT'}">Guest</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

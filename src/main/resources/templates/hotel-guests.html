@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Zurich: Guests</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Guests Page</h1>
+    <table class="table table-striped mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email Address</th>
+            <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="guest : ${guests}">
+            <td th:text="${guest.lastName}">LastName</td>
+            <td th:text="${guest.firstName}">FirstName</td>
+            <td th:text="${guest.emailAddress}">EmailAddress</td>
+            <td th:text="${guest.phoneNumber}">PhoneNumber</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

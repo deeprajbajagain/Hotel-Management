@@ -74,5 +74,49 @@ public class ReservationService {
         });
         return roomReservations;
     }
+
+    // method to fetch all guests in the hotel and sorts the guests by last name, then by first name.
+    public List<Guest> getHotelGuests(){
+        // fetch all guests from the repository
+        Iterable<Guest> guests = this.guestRepository.findAll();
+        List<Guest> guestList = new ArrayList<>();
+
+        // add each guest to the list
+        guests.forEach(guestList::add);
+
+        // sort guests by last name, they by first name
+        guestList.sort(new Comparator<Guest>() {
+            @Override
+            public int compare(Guest o1, Guest o2) {
+                if(o1.getLastName().equals(o2.getLastName())){
+                    return o1.getFirstName().compareTo(o2.getFirstName());
+                }
+                return  o1.getLastName().compareTo(o2.getLastName());
+            }
+        });
+        return guestList;
+    }
+     /*
+    method to fetch all rooms in the hotel.
+    sorts rooms by their room number.
+    */
+
+    public List<Room> getRooms(){
+        // fetch all rooms from the repository
+        Iterable<Room> rooms = this.roomRepository.findAll();
+
+        List<Room> roomList = new ArrayList<>();
+
+        // add each room to the list
+        rooms.forEach(roomList::add);
+
+        roomList.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room o1, Room o2) {
+                return o1.getRoomNumber().compareTo(o2.getRoomNumber());
+            }
+        });
+        return roomList;
+    }
 }
 
