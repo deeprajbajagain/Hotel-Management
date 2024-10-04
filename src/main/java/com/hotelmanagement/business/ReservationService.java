@@ -118,5 +118,16 @@ public class ReservationService {
         });
         return roomList;
     }
+
+    /*
+    method to add a new guest to the repository
+    throws runtime exception if the guest object is null.
+    */
+    public void addGuest(Guest guest){
+        if(guest == null){
+            throw new RuntimeException("Guest cannot be null");
+        }
+        this.guestRepository.save(guest);
+    }
 }
 
